@@ -30,18 +30,17 @@ fun continueFun() : Boolean {
     return false
 }
 
-fun getDouble() : Double {
+fun scanDouble(scanner: Scanner = Scanner(System.`in`)) : Double {
     try {
-        return Scanner(System.`in`).nextDouble()
+        return scanner.nextDouble()
     } catch (e: Exception) {
         print("Invalid number. Try again > ")
-        return getDouble()
+        return scanDouble(scanner)
     }
 }
 
 fun appFun() {
     var option : Char
-    val scanner = Scanner(System.`in`)
 
     println("[A] - Triangle\n" +
             "[B] - Square\n" +
@@ -52,15 +51,15 @@ fun appFun() {
     print("Please select the geometric figure to perform operations on\n" +
             "by entering the corresponding letter > ")
     main@ while (true) {
-        option = scanner.next()[0]
+        option = Scanner(System.`in`).next()[0]
         println()
 
         when (option) {
             'A', 'a' -> {
                 print("Please enter the base > ")
-                val base = scanner.nextDouble()
+                val base = scanDouble()
                 print("Please enter the height > ")
-                val height = scanner.nextDouble()
+                val height = scanDouble()
                 val area = base * height / 2
                 println("Geometric figure on which operations have been made: Triangle\n" +
                         "Base of triangle: ${base}m\n" +
@@ -71,7 +70,7 @@ fun appFun() {
             }
             'B', 'b' -> {
                 print("Please enter the side > ")
-                val side = scanner.nextDouble()
+                val side = scanDouble()
                 val area = side * side
                 println("Geometric figure on which operations have been made: Square\n" +
                         "Side of the square: ${side}m\n" +
@@ -81,9 +80,9 @@ fun appFun() {
             }
             'C', 'c' -> {
                 print("Please enter the length > ")
-                val length = scanner.nextDouble()
+                val length = scanDouble()
                 print("Please enter the width > ")
-                val width = scanner.nextDouble()
+                val width = scanDouble()
                 val area = length * width
 
                 println("Geometric figure on which operations have been made: Rectangle\n" +
@@ -95,7 +94,7 @@ fun appFun() {
             }
             'D','d' -> {
                 print("Please enter the radius > ")
-                val radius = scanner.nextDouble()
+                val radius = scanDouble()
                 val area = Math.PI * radius * radius
                 println("Geometric figure on which operations have been made: Circle\n" +
                         "Radius of circle: ${radius}m\n" +
